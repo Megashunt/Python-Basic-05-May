@@ -21,3 +21,7 @@ second = True
 print(first == second)
 
 import_this
+
+d = 20.1
+print(type(c))
+my_string =
