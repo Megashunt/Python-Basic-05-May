@@ -1,4 +1,5 @@
-srdggdfbdfb
+a = 5
+b = a + 3
+print(b)
 
-gf
-fsdsf
+print (id(b))
