@@ -16,3 +16,5 @@ else:
     print('Not, it is not')
 
 print(x1)
+
+str_input =
