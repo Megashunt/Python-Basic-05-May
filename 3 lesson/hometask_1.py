@@ -12,11 +12,11 @@ input_1 = input_1.replace('!', '')
 # input_1 = input_1.replace(')', '')  # Можно еще и скобочку удалить.
 input_1 = input_1.rstrip()  # Програма видаляє зайві пробіли\табуляції з правого кінця строки
 # Програма питає користувача яке слово (або словосполучення) він бажає замінити
-input_2 = input("What do you want to replace?").lower()  # C++
+input_2 = input("What do you want to replace?").lower()  # C++ P.S. програма работает с любым словом
 index_1 = input_1.find(input_2)
 # Програма повідомляє на якому індексі строки словосполучення присутнє
 print(f'"{input_2.capitalize()}", was found at position {index_1}!')
-# Програма питає на яке слово треба замінити P.S. програма работает с любым словом
+# Програма питає на яке слово треба замінити
 input_3 = input("With what do you want to replace?")
 output_2 = input_1.replace(input_2, input_3)
 print(output_2)  # Програма виводить відформатовану строку
