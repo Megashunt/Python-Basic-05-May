@@ -1,7 +1,6 @@
 input_0 = ''
 while len(input_0) == 0:
     input_0 = input('>')
-
 input_1 = input_0.lower().strip()
 greeting_1 = input_1.find("привіт")
 greeting_2 = input_1.find("хай")
@@ -26,7 +25,7 @@ elif cinema >= 0:
     print("Соррі що втручуюсь, не знаю про що йдеться мова, але сходить подивіться 'Tenet' у кінотеатри, "
           "він просто бомба!")
 elif series >= 0:
-    print("Соррі що втручуюсь, не знаю про що йдеться мова, але подивіться 'Wednesday',"
+    print("Соррі що втручуюсь, не знаю про що йдеться мова, але подивіться серіал 'Wednesday',"
           "він просто бомба!")
 elif goodbye_1 >= 0 or goodbye_2 >= 0 or goodbye_3 >= 0:
     print("Побачимось у мережі, I'll be back.")
