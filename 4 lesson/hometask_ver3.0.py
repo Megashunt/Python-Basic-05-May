@@ -1,7 +1,5 @@
-goodbye_1 = int(-1)
-goodbye_2 = int(-1)
-goodbye_3 = int(-1)
-while goodbye_1 == -1 and goodbye_2 == -1 and goodbye_3 == -1:
+while True:  # используем для того чтобы программа находилась в цикле
+    # запрашиваем ввод пользователя для дальнейшего поиска ключевых слов
     input_1 = input('>').lower().strip()
     greeting_1 = input_1.find("привіт")
     greeting_2 = input_1.find("хай")
@@ -15,13 +13,13 @@ while goodbye_1 == -1 and goodbye_2 == -1 and goodbye_3 == -1:
     goodbye_1 = input_1.find("бувай")
     goodbye_2 = input_1.find("надобраниіч")
     goodbye_3 = input_1.find("гудбай")
+    # конструкция if elif для ответа на найденные ключевые слова
     if greeting_1 >= 0 or greeting_2 >= 0 or greeting_3 >= 0:
         print("Доброго вечора, я бот з України!")
     elif question_1 >= 0 or question_2 >= 0 or question_3 >= 0:
         print("Вчусь програмувати на Python!")
     elif movie >= 0:
-        print("Соррі що втручуюсь, не знаю про що йдеться мова, але подивіться фільм 'Tenet',"
-             "він просто бомба!")
+        print("Соррі що втручуюсь, не знаю про що йдеться мова, але подивіться фільм 'Tenet',""він просто бомба!")
     elif cinema >= 0:
         print("Соррі що втручуюсь, не знаю про що йдеться мова, але сходить подивіться 'Tenet' у кінотеатри, "
               "він просто бомба!")
@@ -30,6 +28,6 @@ while goodbye_1 == -1 and goodbye_2 == -1 and goodbye_3 == -1:
               "він просто бомба!")
     elif goodbye_1 >= 0 or goodbye_2 >= 0 or goodbye_3 >= 0:
         print("Побачимось у мережі, I'll be back.")
-        break
-    else:
+        break  # программа закрывается после прощания пользователя
+    else:  # ответ в случае отсутвия ключевого слова
         print("Дуже цікаво, але, нажаль, нічого не зрозуміло :(")
