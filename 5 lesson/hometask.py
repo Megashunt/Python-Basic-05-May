@@ -1,14 +1,23 @@
-my_list = []
-while True:
+print("Вас приветствует профессиональная пограмма по складыванию чисел. Введите ваши цифры по очереди, после \n"
+      "завершение напишите 'sum', чтобы показать весь список чисел напишите 'print', чтобы удалить предыдущий \n"
+      "ввод напишите 'delete', чтобы очистить весь список напишите 'clear'.")
+my_list = []  # переменная в которую списком будет поступать ввод пользователя
+while True:  # цикл для сбора чисел от пользовтаеля
     try:
-        input_1 = input('Ваше число:').lower().strip()
-        if 'sum' in input_1:
+        input_1 = input('Ваше число или команда:').lower().strip()
+        if 'sum' in input_1:  # проверка на ключевые слова
             print(sum(my_list))
             break
-        if 'print' in input_1:
-            print(my_list)
+        elif 'clear'in input_1:  # дополнительная фича для дополнительных бaлов
+            my_list.clear()
             continue
+        elif 'delete'in input_1:  # дополнительная фича для дополнительных бaлов
+            my_list.pop(-1)
+            continue
+        elif 'print' in input_1:  # дополнительная фича для дополнительных бaлов
+            print(my_list)
+            continue  # так как нас интересуют только цифры то без этой комманды дальше будет ошибка
         variable_1 = float(input_1)
         my_list.append(variable_1)
-    except (ValueError, TypeError):
-        print('Введить число или sum, please!')
+    except (ValueError, TypeError):  # подсмотрел в интеренете что так правильно проверять строчку на правильный ввод
+        print('Введите число или sum, please!')
