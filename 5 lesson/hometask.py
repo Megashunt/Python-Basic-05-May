@@ -19,5 +19,5 @@ while True:  # цикл для сбора чисел от пользовтаел
             continue  # так как нас интересуют только цифры то без этой комманды дальше будет ошибка
         variable_1 = float(input_1)
         my_list.append(variable_1)
-    except (ValueError, TypeError):  # подсмотрел в интеренете что так правильно проверять строчку на правильный ввод
+    except (ValueError, TypeError):  # проверку на такие исключения подсмотрел в интеренете
         print('Введите число или sum, please!')
