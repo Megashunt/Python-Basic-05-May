@@ -10,7 +10,7 @@ def read_user_number(user_prompt: str, lower_bound: float = 0, upper_bound: floa
     while True:
         number = input(f'{user_prompt}\n>')
         try:
-            number = int(number)
+            number = int(number)  # int так как нам нужны только целые числа
             if lower_bound < number < upper_bound:
                 return number
             else:
