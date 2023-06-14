@@ -7,8 +7,9 @@ while i != (len(input_1) - 1):  # цикл будет работать до по
     if input_1[i] == "(":  # ловушка для текста в скобочке
         bracket_condition = True
     elif input_1[i] == ")":  # отмена ловушки для текста в скобочке
-        bracket_condition = False
-    else:
-        if not bracket_condition:
-            new_s += input_1[i]  # пока переменная bracket_condition == False все символы собираются тут
+        if bracket_condition:
+            bracket_condition = False
+            continue
+    if not bracket_condition:
+        new_s += input_1[i]  # пока переменная bracket_condition == False все символы собираются тут
 print(new_s)
