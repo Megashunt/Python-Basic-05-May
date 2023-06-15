@@ -33,16 +33,16 @@ def latest_note(lower_bound: int = 0, upper_bound: int = 9999999):
             print(f'Не удалось получить число из ввода: "{number}", повторите пожалуйста попытку')
 
 
-def longest_note(lower_bound: int = 0, upper_bound: int = 9999999):
+def shortest_note(lower_bound: int = 0, upper_bound: int = 9999999):
     dict_with_notes = dict(zip(origin_note_list, len_origin_note_list))
-    tmp_list = sorted([(v, k) for k, v in dict_with_notes.items()])
+    tmp_sorted_list = sorted([(v, k) for k, v in dict_with_notes.items()])
     while True:
         number = input("Сколько заметок вывести на экран?")
         try:
             number = int(number)  # int так как нам нужны только целые числа
             if lower_bound < number < upper_bound:
                 flag_1 = 0
-                for i in tmp_list:
+                for i in tmp_sorted_list:
                     print(i[1])
                     flag_1 += 1
                     if flag_1 == number:
@@ -53,6 +53,26 @@ def longest_note(lower_bound: int = 0, upper_bound: int = 9999999):
         except (ValueError, TypeError):
             print(f'Не удалось получить число из ввода: "{number}", повторите пожалуйста попытку')
 
+
+def longest_note(lower_bound: int = 0, upper_bound: int = 9999999):
+    dict_with_notes = dict(zip(origin_note_list, len_origin_note_list))
+    tmp_sorted_list = sorted([(v, k) for k, v in dict_with_notes.items()], reverse=True)
+    while True:
+        number = input("Сколько заметок вывести на экран?")
+        try:
+            number = int(number)  # int так как нам нужны только целые числа
+            if lower_bound < number < upper_bound:
+                flag_1 = 0
+                for i in tmp_sorted_list:
+                    print(i[1])
+                    flag_1 += 1
+                    if flag_1 == number:
+                        break
+                break
+            else:
+                print(f'Введите секунды в таких рамках: от {lower_bound} до {upper_bound}')
+        except (ValueError, TypeError):
+            print(f'Не удалось получить число из ввода: "{number}", повторите пожалуйста попытку')
 if __name__ == "__main__":
     print("Добро пожаловать в заметки. Введите ваши заметки по очереди. Используйте 'add' чтобы добавить заметку, \n"
           "'earliest' для отображения в хронологическом порядке, 'latest' для отображения в обратном хронологическом \n"
@@ -72,26 +92,9 @@ if __name__ == "__main__":
             earliest_note()
         elif user_input == 'latest':
             latest_note()
+        elif user_input == 'shortest':
+            shortest_note()
         elif user_input == 'longest':
             longest_note()
-
-# my_list = []  # переменная в которую списком будет поступать ввод пользователя
-# while True:  # цикл для сбора чисел от пользовтаеля
-#     try:
-#         input_1 = input('Ваше число или команда:').lower().strip()
-#         if 'sum' in input_1:  # проверка на ключевые слова
-#             print(sum(my_list))
-#             break
-#         elif 'clear' in input_1:  # дополнительная фича для дополнительных бaлов
-#             my_list.clear()
-#             continue
-#         elif 'delete' in input_1:  # дополнительная фича для дополнительных бaлов
-#             my_list.pop(-1)
-#             continue
-#         elif 'print' in input_1:  # дополнительная фича для дополнительных бaлов
-#             print(my_list)
-#             continue  # так как нас интересуют только цифры то без этой комманды дальше будет ошибка
-#         variable_1 = float(input_1)
-#         my_list.append(variable_1)
-#     except (ValueError, TypeError):  # проверку на такие исключения подсмотрел в интеренете
-#         print('Введите число или sum, please!')
+        elif user_input == 'quit' or 'exit':
+            exit()
