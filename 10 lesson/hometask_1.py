@@ -7,7 +7,7 @@ def add_note() -> str:
     return note_input
 
 
-def earliest_note(lower_bound: int = 0, upper_bound: int = 9999999):
+def earliest_note(lower_bound: int = 0, upper_bound: int = 99):
     """
     Функция по запросу пользователя выдает нужное количество отсортированных заметок. Т.к. список сохраняет по порядку
     нам надо просто вывести нужное количество заметок
@@ -24,12 +24,12 @@ def earliest_note(lower_bound: int = 0, upper_bound: int = 9999999):
                 print("От ранней к поздней:", *earliest_note_list, sep="\n")  # * и sep для красивого вывода спика
                 break
             else:
-                print(f'Введите секунды в таких рамках: от {lower_bound} до {upper_bound}')
+                print(f'Введите число в таких рамках: от {lower_bound} до {upper_bound}')
         except (ValueError, TypeError):
             print(f'Не удалось получить число из ввода: "{number_1}", повторите пожалуйста попытку')
 
 
-def latest_note(lower_bound: int = 0, upper_bound: int = 9999999):
+def latest_note(lower_bound: int = 0, upper_bound: int = 99):
     """
         Функция по запросу пользователя выдает нужное количество отсортированных заметок. Сначала отзеркаливает список
         потом выдает нужное количество заметок
@@ -46,12 +46,12 @@ def latest_note(lower_bound: int = 0, upper_bound: int = 9999999):
                 print("От поздней к ранней:", *latest_note_list[:number_2], sep="\n")
                 break
             else:
-                print(f'Введите секунды в таких рамках: от {lower_bound} до {upper_bound}')
+                print(f'Введите число в таких рамках: от {lower_bound} до {upper_bound}')
         except (ValueError, TypeError):
             print(f'Не удалось получить число из ввода: "{number_2}", повторите пожалуйста попытку')
 
 
-def shortest_note(lower_bound: int = 0, upper_bound: int = 9999999):
+def shortest_note(lower_bound: int = 0, upper_bound: int = 99):
     """
         Функция по запросу пользователя выдает нужное количество отсортированных заметок. Из заготовленных списков
         делается словарь, затем словарь перебирается в новый список с сортировкой по значению длинны. Вывод результата
@@ -77,12 +77,12 @@ def shortest_note(lower_bound: int = 0, upper_bound: int = 9999999):
                         break
                 break
             else:
-                print(f'Введите секунды в таких рамках: от {lower_bound} до {upper_bound}')
+                print(f'Введите число в таких рамках: от {lower_bound} до {upper_bound}')
         except (ValueError, TypeError):
             print(f'Не удалось получить число из ввода: "{number_3}", повторите пожалуйста попытку')
 
 
-def longest_note(lower_bound: int = 0, upper_bound: int = 9999999):
+def longest_note(lower_bound: int = 0, upper_bound: int = 99):
     """
         Функция по запросу пользователя выдает нужное количество отсортированных заметок
         :param lower_bound: нижнее допустимое значение
@@ -107,7 +107,7 @@ def longest_note(lower_bound: int = 0, upper_bound: int = 9999999):
                         break
                 break
             else:
-                print(f'Введите секунды в таких рамках: от {lower_bound} до {upper_bound}')
+                print(f'Введите число в таких рамках: от {lower_bound} до {upper_bound}')
         except (ValueError, TypeError):
             print(f'Не удалось получить число из ввода: "{number_4}", повторите пожалуйста попытку')
 
