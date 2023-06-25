@@ -100,6 +100,18 @@ def quantity_and_statistic(all_data: dict, key_index: str, quantity=True):
                 print(data, all_data[element][data])
 
 
+def last (all_data: dict, key_index: str, key_index_2: str):
+    list_1 = list()
+    for key1_2, value1_2 in all_data.items():
+        # Проход по внутренним ключам
+        for key2_2, value2 in value1_2.items():
+            if value2 == key_index:
+                list_1.append(all_data[key1_2][key_index_2])
+    result = {i: list_1.count(i) for i in list_1}
+    print(result)
+
+
+
 if __name__ == '__main__':
     # создаем новый файл с новым столбцом уникальных айди
     # в нашем проекте уникальный айди это порядковый номер из первой колонки
@@ -127,7 +139,10 @@ if __name__ == '__main__':
         elif 'statistic' in key_word:
             input_2 = input('->')
             quantity_and_statistic(id_index, input_2)
-
+        elif 'last' in key_word:
+            input_2 = input('->')
+            input_3 = input('->')
+            last(id_index, input_2, input_3)
 
         # new_tech_data_with_id_list = open_csv_file_dict(new_tech_data_csv)  # для работы индекс 1
         # index_1 = create_index(new_tech_data_with_id_list, 'brand')
