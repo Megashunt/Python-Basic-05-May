@@ -57,20 +57,6 @@ def create_position_id_index(all_data: list, column_name: str) -> dict:
         new_index[data_entry[column_name]].append(i)
     return new_index
 
-# def print_by_keyword_in_column(d: dict):
-#     list_1 = list()
-#     for key1_1, value1_1 in d.items():
-#         # Проход по внутренним ключам
-#         for key2_1, value2_1 in value1.items():
-#             if value2_1 is "brand":
-#                 list_1.append(key1_1)
-#                 print(key1_1, value1_1)
-#     list_2 = list_1
-#     for element in list_2:
-#         print(element)
-#         for data in d[element]:
-#             print(data, d[element][data])
-
 def print_position_id_index(all_data: list, position_index: dict):
     """
     В удобном формате выводит на экран содержимое переданного индекса по данным
