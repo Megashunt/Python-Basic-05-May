@@ -143,7 +143,7 @@ if __name__ == '__main__':
             input_1 = input("Ведите определенный бренд или категорию для отображения->").title()
             quantity_and_statistic(id_index, input_1, quantity=False)
         elif 'stats' in key_word:
-            input_2 = input('Введите "Category" или "Brand" ->')
+            input_2 = input('Введите "Category" или "Brand" ->').lower()
             quantity_and_statistic(id_index, input_2)
         elif 'show' in key_word:
             input_3 = input('->').title()
