@@ -24,7 +24,7 @@ def unique_id_func(file_1_csv) -> dict:
     """
     Создает словарь где ключ это уникальный айди а значение это вложенный словарь с данными о товаре"
     :param file_1_csv: файл с уникальными айди
-    :return: словарь
+    :return: словарь {уникальный айди: {дата}}
     """
     # как эту функцию надо было сделать по задумке автора?
     with open(file_1_csv, 'r', newline='') as csv_file:
@@ -73,6 +73,13 @@ def create_index(all_data: list, column_name: str) -> dict:
 
 
 def quantity_and_statistic(all_data: dict, key_index: str, quantity=True):
+    """
+    Согласно запросу пользователя выдает информацию или статистику по определенному бренду или категории
+    :param all_data: словарь из unique_id_func()
+    :param key_index: запрос пользователя
+    :param quantity: переключатель
+    :return: отсутствует
+    """
     list_1 = list()
     for key1_2, value1_2 in all_data.items():
         # Проход по внутренним ключам
@@ -88,7 +95,7 @@ def quantity_and_statistic(all_data: dict, key_index: str, quantity=True):
                 print(data, all_data[element][data])
 
 
-def last (all_data: dict, key_index: str, key_index_2: str):
+def last(all_data: dict, key_index: str, key_index_2: str):
     list_1 = list()
     for key1_2, value1_2 in all_data.items():
         # Проход по внутренним ключам
@@ -115,7 +122,6 @@ if __name__ == '__main__':
                 print(key1, ':', value1)
         elif 'cat' in key_word:
             index_1 = create_index(new_tech_data_with_id_list, 'category')
-            print(index_1)
             for key,value in index_1.items():
                 print(key, ':', value)
         elif 'brand' in key_word:
