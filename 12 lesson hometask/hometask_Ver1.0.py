@@ -95,7 +95,14 @@ def quantity_and_statistic(all_data: dict, key_index: str, quantity=True):
                 print(data, all_data[element][data])
 
 
-def last(all_data: dict, key_index: str, key_index_2: str):
+def statistic_for_brand_and_cat(all_data: dict, key_index: str, key_index_2: str):
+    """
+    Hахує розподіл товарів по брендам для кожної категорії(и бренду) та виводить це на екран
+    :param all_data: словарь из unique_id_func()
+    :param key_index: название колонки
+    :param key_index_2: определенный бренд из колонки
+    :return: отсутствует
+    """
     list_1 = list()
     for key1_2, value1_2 in all_data.items():
         # Проход по внутренним ключам
@@ -104,7 +111,6 @@ def last(all_data: dict, key_index: str, key_index_2: str):
                 list_1.append(all_data[key1_2][key_index_2])
     result = {i: list_1.count(i) for i in list_1}
     print(result)
-
 
 
 if __name__ == '__main__':
@@ -137,5 +143,5 @@ if __name__ == '__main__':
         elif 'last' in key_word:
             input_2 = input('->')
             input_3 = input('->')
-            last(id_index, input_2, input_3)
+            statistic_for_brand_and_cat(id_index, input_2, input_3)
 
