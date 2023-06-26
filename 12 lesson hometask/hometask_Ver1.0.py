@@ -2,6 +2,13 @@ import csv
 
 
 def add_column_with_index(old_file, new_file):
+    """
+    К файлу который дан добавляем колонку с порядковыми номерами. В рамках этой задачи порядковый номер и есть
+    уникальный айди
+    :param old_file: input file
+    :param new_file: output file
+    :return: ничего
+    """
     with open(old_file, 'r') as file:
         reader = csv.reader(file)
         header = next(reader)  # Сохраняем заголовок CSV-файла
@@ -14,60 +21,55 @@ def add_column_with_index(old_file, new_file):
 
 
 def unique_id_func(file_1_csv) -> dict:
-
+    """
+    Создает словарь где ключ это уникальный айди а значение это вложенный словарь с данными о товаре"
+    :param file_1_csv: файл с уникальными айди
+    :return: словарь
+    """
+    # как эту функцию надо было сделать по задумке автора?
     with open(file_1_csv, 'r', newline='') as csv_file:
         csv_reader = csv.DictReader(csv_file)
 
         my_dict = {}
 
         for row in csv_reader:
-            key = row['Unique_ID']
+            key_1 = row['Unique_ID']  # Подскажите почему подчеркивает?  Это плохо?
             inner_dict = {}
-            # Итерируем по каждому столбцу, кроме ключа
+            # Итерируем по каждому столбцу кроме ключа
             for column in csv_reader.fieldnames[1:]:
-                value = row[column]
-                inner_dict[column] = value
+                value_1 = row[column]
+                inner_dict[column] = value_1
 
             # Добавляем внутренний словарь в основной словарь
-            my_dict[key] = inner_dict
+            my_dict[key_1] = inner_dict
         return my_dict
 
 
 def open_csv_file_dict(filename) -> list:
+    """
+    Функция для открытия файла с возвратом списка
+    :param filename: файл
+    :return:List где каждый элемент это словарь в формате колонка:значение
+    """
     with open(filename, newline='',) as csv_file:
         reader = csv.DictReader(csv_file)
         rows = list(reader)
         return rows
 
+
 def create_index(all_data: list, column_name: str) -> dict:
+    """
+    Для индексирования даты из списка в словарь по нужной колонке
+    :param all_data: файл
+    :param column_name: название колонки для индексации
+    :return: Словарь в формате название колонки:[data]
+    """
     new_index = dict()
     for data_entry in all_data:
         if data_entry[column_name] not in new_index:
             new_index[data_entry[column_name]] = list()
         new_index[data_entry[column_name]].append(data_entry)
     return new_index
-
-
-def create_position_id_index(all_data: list, column_name: str) -> dict:
-    new_index = dict()
-
-    for i, data_entry in enumerate(all_data):
-        if data_entry[column_name] not in new_index:
-            new_index[data_entry[column_name]] = list()
-        new_index[data_entry[column_name]].append(i)
-    return new_index
-
-def print_position_id_index(all_data: list, position_index: dict):
-    """
-    В удобном формате выводит на экран содержимое переданного индекса по данным
-    :param all_data: данные, по которым построен индекс
-    :param position_index: индекс, где значения - списки порядковых номеров
-    :return: ничего, функция только выводит на экран
-    """
-    for index_key, position_values in position_index.items():
-        print(f'Записи со значением {index_key}')
-        for i in position_values:
-            print(all_data[i])
 
 
 def quantity_and_statistic(all_data: dict, key_index: str, quantity=True):
@@ -113,6 +115,7 @@ if __name__ == '__main__':
                 print(key1, ':', value1)
         elif 'cat' in key_word:
             index_1 = create_index(new_tech_data_with_id_list, 'category')
+            print(index_1)
             for key,value in index_1.items():
                 print(key, ':', value)
         elif 'brand' in key_word:
@@ -130,14 +133,3 @@ if __name__ == '__main__':
             input_3 = input('->')
             last(id_index, input_2, input_3)
 
-        # new_tech_data_with_id_list = open_csv_file_dict(new_tech_data_csv)  # для работы индекс 1
-        # index_1 = create_index(new_tech_data_with_id_list, 'brand')
-        # print(index_1)
-        #
-        # test = test_test(new_tech_data_with_id)
-        #
-        # index_2 = create_position_id_index(new_tech_data_with_id_list, 'brand')
-        # print(index_2)
-
-        # index_1 = create_index(new_tech_data, 'brand')
-        # print(index_1)
