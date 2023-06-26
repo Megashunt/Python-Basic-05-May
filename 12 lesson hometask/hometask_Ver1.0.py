@@ -95,25 +95,30 @@ def quantity_and_statistic(all_data: dict, key_index: str, quantity=True):
                 print(data, all_data[element][data])
 
 
-def statistic_for_brand_and_cat(all_data: dict, key_index: str, key_index_2: str):
+def statistic_for_brand_and_cat(all_data: dict, key_index_1: str):
     """
-    Hахує розподіл товарів по брендам для кожної категорії(и бренду) та виводить це на екран
+    Hахує розподіл товарів по брендам для кожної категорії та виводить це на екран
     :param all_data: словарь из unique_id_func()
-    :param key_index: название колонки
-    :param key_index_2: определенный бренд из колонки
+    :param key_index_1: название колонки
     :return: отсутствует
     """
     list_1 = list()
     for key1_2, value1_2 in all_data.items():
         # Проход по внутренним ключам
         for key2_2, value2 in value1_2.items():
-            if value2 == key_index:
-                list_1.append(all_data[key1_2][key_index_2])
+            if value2 == key_index_1:
+                list_1.append(all_data[key1_2]['brand'])
     result = {i: list_1.count(i) for i in list_1}
     print(result)
 
 
 if __name__ == '__main__':
+    print("Прогрмма для работы с информацией о товаре, введите ID для отображения уникальный ID товара"
+          "cat - для группирования по категориям"
+          "brand - для группирования по категориям "
+          "show - для отображения определенных брендов или категорий"
+          "stats -  информация и статистику по определенному бренду или категории"
+          "show - отоброжения количества по определенному бренду или категории")
     # создаем новый файл с новым столбцом уникальных айди
     # в нашем проекте уникальный айди это порядковый номер из первой колонки
     tech_data = 'tech_inventory.csv'
@@ -122,7 +127,7 @@ if __name__ == '__main__':
     id_index = unique_id_func(new_tech_data_csv)  # для словаря в словаря
     new_tech_data_with_id_list = open_csv_file_dict(new_tech_data_csv)
     while True:
-        key_word = input('->')
+        key_word = input('->').lower().split()
         if 'id' in key_word:
             for key1, value1 in id_index.items():
                 print(key1, ':', value1)
@@ -135,13 +140,11 @@ if __name__ == '__main__':
             for key,value in index_1.items():
                 print(key, ':', value)
         elif 'show' in key_word:
-            input_1 = input("Ведите определенный бренд или категорию для отображения").title()
+            input_1 = input("Ведите определенный бренд или категорию для отображения->").title()
             quantity_and_statistic(id_index, input_1, quantity=False)
-        elif 'statistic' in key_word:
-            input_2 = input('->')
+        elif 'stats' in key_word:
+            input_2 = input('Введите "Category" или "Brand" ->')
             quantity_and_statistic(id_index, input_2)
-        elif 'last' in key_word:
-            input_2 = input('->')
-            input_3 = input('->')
-            statistic_for_brand_and_cat(id_index, input_2, input_3)
-
+        elif 'show' in key_word:
+            input_3 = input('->').title()
+            statistic_for_brand_and_cat(id_index, input_3)
