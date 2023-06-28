@@ -66,4 +66,3 @@ class Cat:
         if self.hours_outdoors > 3:
             self.hungry -= 1
         return "Настроение улучшилось!" if not alone else "Настроение без изменений("
-
