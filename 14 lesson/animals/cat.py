@@ -1,5 +1,4 @@
 from .animal import Animal
-from random import randint
 
 
 class Cat(Animal):
