@@ -10,4 +10,3 @@ if __name__ == '__main__':
     lst = fib(user_input)
     for element in lst:  # для красивого вывода
         print(element)
-
