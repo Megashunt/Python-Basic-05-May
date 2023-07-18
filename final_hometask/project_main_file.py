@@ -6,11 +6,11 @@ if __name__ == '__main__':
     # инициализация CSVProcessor
     collect_csv_data = CSVProcessor(user_input)
     # собираем все данные в список
-    list_csv = collect_csv_data.all_csv_data_list()
+    list_csv = collect_csv_data.all_data_list()
     # инициализация JSONProcessor
     collect_json_data = JSONProcessor(user_input)
     # собираем все данные в список
-    list_json = collect_json_data.all_json_data_list()
+    list_json = collect_json_data.all_data_list()
     # объединяем данные
     FileProcessor.data_entry_list = list_csv + list_json
     # инициализируем класс DataEntry
@@ -21,7 +21,7 @@ if __name__ == '__main__':
     print("Створіть індекси:")
     # выводим индекс в зависимости от колонки
     x = 'sku'  # or warehouse or operation
-    task_1 = metric_calc.indx_column(x)
+    task_1 = metric_calc.create_index(x)
     for key, value in task_1.items():
         print(key, ':', value)
 

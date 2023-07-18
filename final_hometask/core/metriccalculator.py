@@ -13,7 +13,7 @@ class MetricCalculator:
         self.all_indexes = all_indexes
         self.all_data = self.all_indexes.all_data
 
-    def indx_column(self, column_name: str) -> dict:
+    def create_index(self, column_name: str) -> dict:
         new_index = dict()
         for data_entry in self.all_data:
             if data_entry[column_name] not in new_index:

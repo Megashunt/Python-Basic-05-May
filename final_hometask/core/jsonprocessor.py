@@ -11,7 +11,7 @@ class JSONProcessor(FileProcessor):
         super().__init__(path=path)
         self.filepaths = [f for f in os.listdir(path) if f.endswith('.json')]
 
-    def all_json_data_list(self):
+    def all_data_list(self):
         json_data = dict()
         for each_path in self.filepaths:
             global_file_paths = self.path + each_path
