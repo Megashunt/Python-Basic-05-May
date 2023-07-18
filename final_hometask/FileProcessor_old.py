@@ -1,5 +1,6 @@
 from csvprocessor import CSVProcessor
-
+import datetime
+import pandas as pd
 
 def create_index(all_data: list, column_name: str) -> dict:
     """
@@ -12,9 +13,25 @@ def create_index(all_data: list, column_name: str) -> dict:
     for data_entry in all_data:
         if data_entry[column_name] not in new_index:
             new_index[data_entry[column_name]] = list()
+
         new_index[data_entry[column_name]].append(data_entry)
     return new_index
 
+def exp_create_index(all_data: list, column_name: str) -> dict:
+    """
+    Для индексирования даты из списка в словарь по нужной колонке
+    :param all_data: файл
+    :param column_name: название колонки для индексации
+    :return: Словарь в формате название колонки:[data]
+    """
+    new_index = dict()
+    for data_entry in all_data:
+        x = data_entry[column_name]
+        y = datetime.datetime.strptime(x, '%d-%b-%Y')
+        if data_entry[column_name] not in new_index:
+            new_index[y] = list()
+        new_index[y].append(data_entry)
+    return new_index
 
 def quantity_and_statistic(all_data: dict, key_index: str, quantity=True):
     """
@@ -35,6 +52,7 @@ def quantity_and_statistic(all_data: dict, key_index: str, quantity=True):
     print(sum(list_2))
     return list_1
 
+
 def statistic_for_brand_and_cat(all_data: dict, key_index_1: str):
     """
     Hахує розподіл товарів по брендам для кожної категорії та виводить це на екран
@@ -52,18 +70,3 @@ def statistic_for_brand_and_cat(all_data: dict, key_index_1: str):
     print(result)
 
 
-if __name__ == '__main__':
-    process_directory = CSVProcessor(r'/Users/advakhov/Рабочая папка /PyCharm/final_hometask  /SKU/')
-    csv_data_list = CSVProcessor.all_csv_data_list(process_directory)
-    csv_data_dict = CSVProcessor.all_csv_data_dict_unique(process_directory)
-    # # indx
-    # indx_sku = create_index(csv_data_list, "sku")
-    # print(indx_sku)
-    # indx_wrhs = create_index(csv_data_list, "warehouse")
-    # print(indx_wrhs)
-    # indx_oprtn = create_index(csv_data_list, "operation")
-    # print(indx_oprtn)
-
-    # metrics
-    sale_sum = quantity_and_statistic(csv_data_dict, "sale")
-    print(sale_sum)
