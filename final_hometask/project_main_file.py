@@ -10,7 +10,7 @@ if __name__ == '__main__':
     # инициализация JSONProcessor
     collect_json_data = JSONProcessor(user_input)
     # собираем все данные в список
-    list_json = collect_json_data.all_csv_data_list()
+    list_json = collect_json_data.all_json_data_list()
     # объединяем данные
     FileProcessor.data_entry_list = list_csv + list_json
     # инициализируем класс DataEntry
@@ -28,4 +28,3 @@ if __name__ == '__main__':
     print("прибуток від усіх операцій типу sale (сума колонки operation_cost де колонка operation == 'sale')")
     first_metric = metric_calc.first_metric()
     print(f'Прибыль {first_metric} UAH')
-    print(len(FileProcessor.data_entry_list))
