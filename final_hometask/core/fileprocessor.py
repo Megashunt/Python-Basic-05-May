@@ -1,4 +1,7 @@
 class FileProcessor:
+    """
+    Класс родитель который принмает директорию файлов
+    """
 
     def __init__(self, path: str):
         self.path = path

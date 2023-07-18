@@ -100,6 +100,10 @@ def comment_indx(all_data: list) -> dict:
 
 
 class DataEntry:
+    """
+    Класс который прнимает общий список и индексирует по столбцам
+    Форматы индексаций согласно UML таблицы
+    """
 
     def __init__(self, all_data: list):
         self.all_data = all_data

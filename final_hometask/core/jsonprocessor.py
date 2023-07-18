@@ -4,6 +4,9 @@ import os
 
 
 class JSONProcessor(FileProcessor):
+    """
+      Класс наследник FileProcessor. Ищет все файлы с расширением JSON и собирает все данные в один список
+      """
     def __init__(self, path: str):
         super().__init__(path=path)
         self.filepaths = [f for f in os.listdir(path) if f.endswith('.json')]

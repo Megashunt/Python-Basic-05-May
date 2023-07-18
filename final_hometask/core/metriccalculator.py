@@ -3,6 +3,11 @@ from uuid import uuid4
 
 
 class MetricCalculator:
+    """
+    Отдельный класс который может взять или общий список или готовые индексы из Data Entry
+    для подсчета разных метрик
+
+    """
 
     def __init__(self, all_indexes: DataEntry):
         self.all_indexes = all_indexes
@@ -30,4 +35,3 @@ class MetricCalculator:
                     list_2.append(float(unique_uuid_index[key1_2]['operation_cost']))
         result = sum(list_2)
         return result
-
